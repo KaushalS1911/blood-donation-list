@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Avatar, Container } from '@mui/material';
+import {
+    Table,
+    TableBody,
+    TableCell,
+    TableContainer,
+    TableHead,
+    TableRow,
+    Paper,
+    Avatar,
+    Container,
+    Typography
+} from '@mui/material';
 import axios from 'axios';
 
 const DonationTable = () => {
@@ -24,26 +35,30 @@ const DonationTable = () => {
                 <Table>
                     <TableHead>
                         <TableRow>
+                            <TableCell><strong>#</strong></TableCell>
                             <TableCell><strong>Donor</strong></TableCell>
-                            <TableCell><strong>Name</strong></TableCell>
                             <TableCell><strong>Contact</strong></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {donors.map((donor) => (
+                        {donors.map((donor,index) => (
                             <TableRow key={donor.id}>
+                                <TableCell>{index + 1}</TableCell>
                                 <TableCell>
-                                    <Avatar
-                                        src={donor.image}
-                                        alt={donor.name}
-                                        sx={{
-                                            width: 60,
-                                            height: 60,
-                                            borderRadius: '10%',
-                                        }}
-                                    />
+                                    <div style={{ display: 'flex', alignItems: 'center' }}>
+                                        <Avatar
+                                            src={donor.image}
+                                            alt={donor.name}
+                                            sx={{
+                                                width: 60,
+                                                height: 60,
+                                                borderRadius: '10%',
+                                                marginRight: 5 // Adds space between image and name
+                                            }}
+                                        />
+                                        <Typography variant="body1">{donor.name}</Typography>
+                                    </div>
                                 </TableCell>
-                                <TableCell>{donor.name}</TableCell>
                                 <TableCell>{donor.contact}</TableCell>
                             </TableRow>
                         ))}
