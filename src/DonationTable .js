@@ -6,11 +6,10 @@ const DonationTable = () => {
     const [donors, setDonors] = useState([]);
 
     useEffect(() => {
-        // Fetch data from the API
         const fetchData = async () => {
             try {
                 const response = await axios.get('https://blood-donation-be.onrender.com/api/card');
-                setDonors(response.data); // Assuming the response is an array of donor objects
+                setDonors(response.data);
             } catch (error) {
                 console.error('Error fetching donor data', error);
             }
@@ -40,7 +39,7 @@ const DonationTable = () => {
                                         sx={{
                                             width: 60,
                                             height: 60,
-                                            borderRadius: '10%', // Creates square with slightly rounded corners
+                                            borderRadius: '10%',
                                         }}
                                     />
                                 </TableCell>
